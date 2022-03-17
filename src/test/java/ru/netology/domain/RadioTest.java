@@ -184,4 +184,17 @@ class RadioTest {
 
         assertEquals(expected,actual);
     }
+    @Test
+    public void shouldDecreaseVolume(){
+        Radio smart = new Radio();
+
+        smart.increaseToMax();
+
+        smart.decreaseVolume();
+
+        int expected = 9;
+        int actual = smart.getVolume();
+
+        assertEquals(expected,actual);
+    }
 }
