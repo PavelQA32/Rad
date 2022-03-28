@@ -55,6 +55,7 @@ class RadioTest {
 
         assertEquals(expected, actual);
     }
+
     @Test
     public void shouldSwitchOnChosenStationIfChosenStationEqual0() {
         Radio smart = new Radio();
@@ -66,6 +67,7 @@ class RadioTest {
 
         assertEquals(expected, actual);
     }
+
     @Test
     public void shouldSwitchOnChosenStationIfChosenStationEqualNegative() {
         Radio smart = new Radio();
@@ -77,8 +79,9 @@ class RadioTest {
 
         assertEquals(expected, actual);
     }
+
     @Test
-    public void shouldSwitchOnNextStation(){
+    public void shouldSwitchOnNextStation() {
         Radio smart = new Radio();
 
         smart.nextStation();
@@ -86,10 +89,11 @@ class RadioTest {
         int expected = 1;
         int actual = smart.getCurrentStation();
 
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
     }
+
     @Test
-    public void shouldSwitchOnNextStationIfCurrentStationEqual9(){
+    public void shouldSwitchOnNextStationIfCurrentStationEqual9() {
         Radio smart = new Radio();
 
         smart.newCurrentStation(9);
@@ -99,19 +103,23 @@ class RadioTest {
         int expected = 0;
         int actual = smart.getCurrentStation();
 
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
     }
+
     @Test
-    public void shouldSwitchOnPreviousStation(){
+    public void shouldSwitchOnPreviousStation() {
         Radio smart = new Radio();
 
         smart.prevStation();
 
         int expected = 9;
         int actual = smart.getCurrentStation();
+
+        assertEquals(expected,actual);
     }
+
     @Test
-    public void shouldSwitchOnPreviousStationIfCurrentStationEqual1(){
+    public void shouldSwitchOnPreviousStationIfCurrentStationEqual1() {
         Radio smart = new Radio();
 
         smart.newCurrentStation(1);
@@ -120,9 +128,12 @@ class RadioTest {
 
         int expected = 0;
         int actual = smart.getCurrentStation();
+
+        assertEquals(expected,actual);
     }
+
     @Test
-    public void shouldIncreaseVolume(){
+    public void shouldIncreaseVolume() {
         Radio smart = new Radio();
 
         smart.increaseVolume();
@@ -130,10 +141,11 @@ class RadioTest {
         int expected = 1;
         int actual = smart.getVolume();
 
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
     }
+
     @Test
-    public void shouldIncreaseVolumeToMax(){
+    public void shouldIncreaseVolumeToMax() {
         Radio smart = new Radio();
 
         smart.increaseToMax();
@@ -141,10 +153,11 @@ class RadioTest {
         int expected = 10;
         int actual = smart.getVolume();
 
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
     }
+
     @Test
-    public void shouldIncreaseVolumeToMaxAndTryIncreaseMore(){
+    public void shouldIncreaseVolumeToMaxAndTryIncreaseMore() {
         Radio smart = new Radio();
 
         smart.increaseToMax();
@@ -154,10 +167,11 @@ class RadioTest {
         int expected = 10;
         int actual = smart.getVolume();
 
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
     }
+
     @Test
-    public void shouldMute(){
+    public void shouldMute() {
         Radio smart = new Radio();
 
         smart.increaseToMax();
@@ -167,10 +181,11 @@ class RadioTest {
         int expected = 0;
         int actual = smart.getVolume();
 
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
     }
+
     @Test
-    public void shouldMuteAndTryDecreaseVolume(){
+    public void shouldMuteAndTryDecreaseVolume() {
         Radio smart = new Radio();
 
         smart.increaseToMax();
@@ -182,10 +197,11 @@ class RadioTest {
         int expected = 0;
         int actual = smart.getVolume();
 
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
     }
+
     @Test
-    public void shouldDecreaseVolume(){
+    public void shouldDecreaseVolume() {
         Radio smart = new Radio();
 
         smart.increaseToMax();
@@ -195,6 +211,6 @@ class RadioTest {
         int expected = 9;
         int actual = smart.getVolume();
 
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
     }
 }
