@@ -100,6 +100,8 @@ class RadioTest {
 
         smart.nextStation();
 
+        smart.getNumberOfStations();
+
         int expected = 0;
         int actual = smart.getCurrentStation();
 
@@ -115,7 +117,7 @@ class RadioTest {
         int expected = 9;
         int actual = smart.getCurrentStation();
 
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -129,7 +131,7 @@ class RadioTest {
         int expected = 0;
         int actual = smart.getCurrentStation();
 
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -150,7 +152,7 @@ class RadioTest {
 
         smart.increaseToMax();
 
-        int expected = 10;
+        int expected = 100;
         int actual = smart.getVolume();
 
         assertEquals(expected, actual);
@@ -164,7 +166,7 @@ class RadioTest {
 
         smart.increaseVolume();
 
-        int expected = 10;
+        int expected = 100;
         int actual = smart.getVolume();
 
         assertEquals(expected, actual);
@@ -208,9 +210,132 @@ class RadioTest {
 
         smart.decreaseVolume();
 
-        int expected = 9;
+        int expected = 99;
         int actual = smart.getVolume();
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    public void shouldCreateNewRadio() {
+        Radio smart = new Radio(20);
+
+        smart.setCurrentStation(19);
+
+        int expected = smart.getCurrentStation();
+        int actual = 19;
+
+        assertEquals(expected, actual);
+
+    }
+
+    @Test
+
+    public void shouldShowCurrentNumberOfStation() {
+        Radio smart = new Radio();
+
+        smart.getNumberOfStations();
+
+        smart.setNumberOfStations(3);
+
+        int expected = 2;
+
+        int actual = smart.getNumberOfStations();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+
+    public void shouldShowNumberOfCurrentStationIfItEqualZero() {
+        Radio smart = new Radio();
+
+        smart.setNumberOfStations(0);
+
+        int expected = 0;
+        int actual = smart.getNumberOfStations();
+
+        assertEquals(expected, actual);
+
+    }
+
+    @Test
+    public void shouldSwitchOnZeroStationIfCurrentStationIsMaxAndIncreaseMore() {
+        Radio smart = new Radio(100);
+
+        smart.getNumberOfStations();
+
+        smart.newCurrentStation(99);
+
+        smart.getCurrentStation();
+
+        smart.nextStation();
+
+        int expected = 0;
+        int actual = smart.getCurrentStation();
+
+        assertEquals(expected, actual);
+
+    }
+
+    @Test
+    public void shouldSwitchOnMaxStationIfCurrentStationIsMinAndDecreaseMore() {
+        Radio smart = new Radio(147);
+
+        smart.newCurrentStation(0);
+
+        smart.prevStation();
+
+        int expected = 146;
+        int actual = smart.getCurrentStation();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void setCurrentStationTest() {
+        Radio smart = new Radio(55);
+
+        smart.setCurrentStation(5);
+
+        int expected = 5;
+        int actual = smart.getCurrentStation();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void setVolumeTest() {
+        Radio smart = new Radio();
+
+        smart.setVolume(84);
+
+        int expected = 84;
+        int actual = smart.getVolume();
+
+        assertEquals(expected, actual);
+    }
+    @Test
+    public void shouldCantSetVolumeMoreThenMax(){
+        Radio smart = new Radio();
+
+        smart.setVolume(456);
+
+        int expected = 100;
+        int actual = smart.getVolume();
+
+        assertEquals(expected,actual);
+    }
+    @Test
+    public void shouldCantSetVolumeLessMin(){
+        Radio smart = new Radio();
+
+        smart.setVolume(-4);
+
+        int expected = 0;
+        int actual = smart.getVolume();
+
+        assertEquals(expected,actual);
+    }
+
 }
