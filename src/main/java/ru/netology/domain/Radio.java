@@ -3,6 +3,44 @@ package ru.netology.domain;
 public class Radio {
     private int currentStation;
     private int volume;
+    private int numberOfStations = 10;
+
+
+    public void setCurrentStation(int currentStation) {
+        this.currentStation = currentStation;
+    }
+
+    public void setVolume(int volume) {
+        if(volume > 100){
+            volume = 100;
+        }
+        if(volume < 0){
+            volume = 0;
+        }
+        this.volume = volume;
+    }
+
+    public int getNumberOfStations() {
+        return numberOfStations;
+    }
+
+    public int setNumberOfStations(int numberOfStations) {
+        this.numberOfStations = numberOfStations;
+        int currentNumberOfStation = numberOfStations - 1;
+        if (currentNumberOfStation <= 0) {
+            currentNumberOfStation = 0;
+        }
+        this.numberOfStations = currentNumberOfStation;
+        return this.numberOfStations;
+    }
+
+    public Radio(int numberOfStations) {
+        this.numberOfStations = numberOfStations;
+    }
+
+    public Radio() {
+    }
+
 
     public int getCurrentStation() {
         return currentStation;
@@ -14,7 +52,7 @@ public class Radio {
 
     public void nextStation() {
         int nextStation = getCurrentStation() + 1;
-        if (nextStation > 9) {
+        if (nextStation > getNumberOfStations() - 1) {
             nextStation = 0;
         }
         currentStation = nextStation;
@@ -23,14 +61,14 @@ public class Radio {
     public void prevStation() {
         int prevStation = getCurrentStation() - 1;
         if (prevStation < 0) {
-            prevStation = 9;
+            prevStation = numberOfStations - 1;
         }
         currentStation = prevStation;
     }
 
     public int newCurrentStation(int newCurrentStation) {
-        if (newCurrentStation > 9) {
-            newCurrentStation = 9;
+        if (newCurrentStation > numberOfStations - 1) {
+            newCurrentStation = numberOfStations - 1;
             currentStation = newCurrentStation;
         }
         if (newCurrentStation < 0) {
@@ -43,8 +81,8 @@ public class Radio {
 
     public void increaseVolume() {
         int increasedVolume = getVolume() + 1;
-        if (increasedVolume > 10) {
-            increasedVolume = 10;
+        if (increasedVolume > 100) {
+            increasedVolume = 100;
         }
         volume = increasedVolume;
     }
@@ -58,7 +96,7 @@ public class Radio {
     }
 
     public void increaseToMax() {
-        volume = 10;
+        volume = 100;
     }
 
     public void mute() {
